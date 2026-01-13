@@ -1,0 +1,46 @@
+using FCG.Domain.Shared.Abstractions;
+using FCG.Domain.Shared.Exceptions;
+
+namespace FCG.Domain.Identidade.ValueObjects;
+
+public sealed class SenhaTextoPuro : ValueObject
+{
+    public const byte TAMANHO_MINIMO_SENHA = 8;
+    public const byte TAMANHO_MAXIMO_SENHA = 128;
+    public string Senha { get; }
+
+    public SenhaTextoPuro(string senha)
+    {
+        if (string.IsNullOrWhiteSpace(senha))
+            throw new DomainException("Senha obrigatória");
+            
+        switch (senha.Length)
+        {
+            case < TAMANHO_MINIMO_SENHA:
+                throw new DomainException("Senha deve ter no mínimo 8 caracteres");
+            case > TAMANHO_MAXIMO_SENHA:
+                throw new DomainException("Senha muito longa");
+        }
+
+        if (!senha.Any(char.IsUpper))
+            throw new DomainException("Senha deve conter maiúsculas");
+            
+        if (!senha.Any(char.IsLower))
+            throw new DomainException("Senha deve conter minúsculas");
+            
+        if (!senha.Any(char.IsDigit))
+            throw new DomainException("Senha deve conter números");
+            
+        if (!senha.Any(c => "!@#$%^&*()".Contains(c)))
+            throw new DomainException("Senha deve conter caracteres especiais");
+        
+        Senha = senha;
+    }
+
+    public override string ToString() => Senha;
+    
+    protected override IEnumerable<object?> ObterComponentesDeIgualdade()
+    {
+        yield return Senha;
+    }
+}
