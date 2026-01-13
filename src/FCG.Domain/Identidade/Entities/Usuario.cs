@@ -50,8 +50,13 @@ public sealed class Usuario : Entity, IAggregateRoot
     public void SetSenhaHash(SenhaHash senhaHash) =>
         SenhaHash = senhaHash ?? throw new DomainException("Senha é obrigatória");
 
-    public void SetPerfil(PerfilUsuario perfil) =>
+    public void SetPerfil(PerfilUsuario perfil)
+    {
+        if (!Enum.IsDefined(perfil))
+            throw new DomainException("Perfil do usuário é inválido, valor não definido");
+        
         Perfil = perfil;
+    }
 
     public void SetAtivo(bool ativo) =>
         Ativo = ativo;

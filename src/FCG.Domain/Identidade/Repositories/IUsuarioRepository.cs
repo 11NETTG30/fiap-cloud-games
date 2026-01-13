@@ -8,4 +8,5 @@ public interface IUsuarioRepository : IRepository<Usuario>
     Task<Usuario> ObterPorId(Guid id);
     Task Adicionar(Usuario usuario);
     Task Atualizar(Usuario usuario);
+    Task<bool> VerificarExistenciaEmail(string email);
 }
