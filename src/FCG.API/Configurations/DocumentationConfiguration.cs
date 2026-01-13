@@ -9,6 +9,7 @@ public static class DocumentationConfiguration
     {
         public IServiceCollection AddDocumentation()
         {
+            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             services.AddOpenApi(options =>
             {
                 options.AddDocumentTransformer((document, context, cancellationToken) =>
