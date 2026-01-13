@@ -12,27 +12,27 @@ public sealed class SenhaTextoPuro : ValueObject
     public SenhaTextoPuro(string senha)
     {
         if (string.IsNullOrWhiteSpace(senha))
-            throw new DomainException("Senha obrigatória");
+            throw new ValidationException("Senha obrigatória");
             
         switch (senha.Length)
         {
             case < TAMANHO_MINIMO_SENHA:
-                throw new DomainException("Senha deve ter no mínimo 8 caracteres");
+                throw new ValidationException("Senha deve ter no mínimo 8 caracteres");
             case > TAMANHO_MAXIMO_SENHA:
-                throw new DomainException("Senha muito longa");
+                throw new ValidationException("Senha muito longa");
         }
 
         if (!senha.Any(char.IsUpper))
-            throw new DomainException("Senha deve conter maiúsculas");
+            throw new ValidationException("Senha deve conter maiúsculas");
             
         if (!senha.Any(char.IsLower))
-            throw new DomainException("Senha deve conter minúsculas");
+            throw new ValidationException("Senha deve conter minúsculas");
             
         if (!senha.Any(char.IsDigit))
-            throw new DomainException("Senha deve conter números");
+            throw new ValidationException("Senha deve conter números");
             
         if (!senha.Any(c => "!@#$%^&*()".Contains(c)))
-            throw new DomainException("Senha deve conter caracteres especiais");
+            throw new ValidationException("Senha deve conter caracteres especiais");
         
         Senha = senha;
     }

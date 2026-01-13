@@ -21,10 +21,10 @@ public class SenhaTextoPuroTests
     [InlineData(null)]
     [InlineData("")]
     [InlineData("    ")]
-    public void CriarSenha_VaziaOuNula_DeveLancarException(string? senhaVazia)
+    public void CriarSenha_VaziaOuNula_DeveLancarValidationException(string? senhaVazia)
     {
         // Act & Assert
-        DomainException exception = Assert.Throws<DomainException>(() => new SenhaTextoPuro(senhaVazia!));
+        ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaVazia!));
         Assert.Equal("Senha obrigatória", exception.Message);
     }
     
@@ -42,13 +42,13 @@ public class SenhaTextoPuroTests
     }
 
     [Fact]
-    public void CriarSenha_MenorQueMinimo_DeveLancarException()
+    public void CriarSenha_MenorQueMinimo_DeveLancarValidationException()
     {
         // Arrange
         const string senhaCurta = "Short1!";
 
         // Act & Assert
-        DomainException exception = Assert.Throws<DomainException>(() => new SenhaTextoPuro(senhaCurta));
+        ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaCurta));
         Assert.Equal("Senha deve ter no mínimo 8 caracteres", exception.Message);
     }
 
@@ -66,57 +66,57 @@ public class SenhaTextoPuroTests
     }
     
     [Fact]
-    public void CriarSenha_MaiorQueMaximo_DeveLancarException()
+    public void CriarSenha_MaiorQueMaximo_DeveLancarValidationException()
     {
         // Arrange
         string senhaLonga = new string('a', SenhaTextoPuro.TAMANHO_MAXIMO_SENHA - 2) + "A1!";
 
         // Act & Assert
-        DomainException exception = Assert.Throws<DomainException>(() => new SenhaTextoPuro(senhaLonga));
+        ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaLonga));
         Assert.Equal("Senha muito longa", exception.Message);
     }
     
     [Fact]
-    public void CriarSenha_SemMaiusculas_DeveLancarException()
+    public void CriarSenha_SemMaiusculas_DeveLancarValidationException()
     {
         // Arrange
         const string senhaSemMaiuscula = "senhateste12345!";
 
         // Act & Assert
-        DomainException exception = Assert.Throws<DomainException>(() => new SenhaTextoPuro(senhaSemMaiuscula));
+        ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaSemMaiuscula));
         Assert.Equal("Senha deve conter maiúsculas", exception.Message);
     }
 
     [Fact]
-    public void CriarSenha_SemMinusculas_DeveLancarException()
+    public void CriarSenha_SemMinusculas_DeveLancarValidationException()
     {
         // Arrange
         const string senhaSemMinuscula = "SENHATESTE12345!";
 
         // Act & Assert
-        DomainException exception = Assert.Throws<DomainException>(() => new SenhaTextoPuro(senhaSemMinuscula));
+        ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaSemMinuscula));
         Assert.Equal("Senha deve conter minúsculas", exception.Message);
     }
     
     [Fact]
-    public void CriarSenha_SemNumeros_DeveLancarException()
+    public void CriarSenha_SemNumeros_DeveLancarValidationException()
     {
         // Arrange
         const string senhaSemNumero = "SenhaSemNumero!";
 
         // Act & Assert
-        DomainException exception = Assert.Throws<DomainException>(() => new SenhaTextoPuro(senhaSemNumero));
+        ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaSemNumero));
         Assert.Equal("Senha deve conter números", exception.Message);
     }
 
     [Fact]
-    public void CriarSenha_SemCaracteresEspeciais_DeveLancarException()
+    public void CriarSenha_SemCaracteresEspeciais_DeveLancarValidationException()
     {
         // Arrange
         const string senhaSemEspecial = "SenhaTeste12345";
 
         // Act & Assert
-        DomainException exception = Assert.Throws<DomainException>(() => new SenhaTextoPuro(senhaSemEspecial));
+        ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaSemEspecial));
         Assert.Equal("Senha deve conter caracteres especiais", exception.Message);
     }
     

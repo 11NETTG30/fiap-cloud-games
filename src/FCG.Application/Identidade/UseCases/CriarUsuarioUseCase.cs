@@ -26,6 +26,9 @@ public sealed class CriarUsuarioUseCase
     public async Task<Guid> Executar(CriarUsuarioDTO dto)
     {
         Email email = new(dto.Email);
+
+        if (dto.Senha != dto.ConfirmacaoSenha)
+            throw new ValidationException("'Senha' e 'Confirmação de Senha' são diferentes");
         
         SenhaTextoPuro senhaTextoPuro = new(dto.Senha);
         SenhaHash senhaHash = _senhaHasher.GerarHash(senhaTextoPuro);
@@ -40,7 +43,7 @@ public sealed class CriarUsuarioUseCase
         bool emailExiste = await _usuarioRepository.VerificarExistenciaEmail(usuario.Email.Valor);
         
         if (emailExiste)
-            throw new DomainException("Já existe um usuário cadastrado com esse e-mail.");
+            throw new ConflictException("Já existe um usuário cadastrado com esse e-mail.");
 
         await _usuarioRepository.Adicionar(usuario);
         await _usuarioRepository.UnitOfWork.Commit();

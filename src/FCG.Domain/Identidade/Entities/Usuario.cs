@@ -36,24 +36,24 @@ public sealed class Usuario : Entity, IAggregateRoot
     public void SetNome(string nome)
     {
         if (string.IsNullOrEmpty(nome))
-            throw new DomainException("Nome não pode ser vazio ou nulo");
+            throw new ValidationException("Nome não pode ser vazio ou nulo");
         
         if (nome.Length is < 2 or > 100)
-            throw new DomainException("Nome deve ter entre 2 e 100 caracteres");
+            throw new ValidationException("Nome deve ter entre 2 e 100 caracteres");
         
         Nome =  nome.Trim();
     }
     
     public void SetEmail(Email email) =>
-        Email = email ?? throw new DomainException("E-mail é obrigatório");
+        Email = email ?? throw new ValidationException("E-mail é obrigatório");
     
     public void SetSenhaHash(SenhaHash senhaHash) =>
-        SenhaHash = senhaHash ?? throw new DomainException("Senha é obrigatória");
+        SenhaHash = senhaHash ?? throw new ValidationException("Senha é obrigatória");
 
     public void SetPerfil(PerfilUsuario perfil)
     {
         if (!Enum.IsDefined(perfil))
-            throw new DomainException("Perfil do usuário é inválido, valor não definido");
+            throw new ValidationException("Perfil do usuário é inválido, valor não definido");
         
         Perfil = perfil;
     }

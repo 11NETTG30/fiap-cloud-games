@@ -11,10 +11,10 @@ public sealed class SenhaHash : ValueObject
     public SenhaHash(string senha)
     {
         if (string.IsNullOrWhiteSpace(senha))
-            throw new DomainException("Senha não pode ser vazia");
+            throw new ValidationException("Senha não pode ser vazia");
 
         if (senha.Length != TAMANHO_ESPERADO_SENHA_HASH)
-            throw new DomainException("Senha hash com tamanho inesperado");
+            throw new ValidationException("Senha hash com tamanho inesperado");
         
         Senha = senha;
     }

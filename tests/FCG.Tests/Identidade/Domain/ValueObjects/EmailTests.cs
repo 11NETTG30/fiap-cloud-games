@@ -26,10 +26,10 @@ public class EmailTests
     [InlineData(null)]
     [InlineData("")]
     [InlineData("   ")]
-    public void CriarEmail_VazioOuNulo_DeveLancarDomainException(string? valor)
+    public void CriarEmail_VazioOuNulo_DeveLancarValidationException(string? valor)
     {
         // Act & Assert
-        DomainException ex = Assert.Throws<DomainException>(() => new Email(valor!));
+        ValidationException ex = Assert.Throws<ValidationException>(() => new Email(valor!));
         Assert.Equal("E-mail não pode ser vazio", ex.Message);
     }
 
@@ -45,10 +45,10 @@ public class EmailTests
     [InlineData("joao$silva@dominio.com")]
     [InlineData("joao.silva@dominio.c")]
     [InlineData("joao.silva@dominio.c-m")]
-    public void CriarEmail_FormatoInvalido_DeveLancarDomainException(string valor)
+    public void CriarEmail_FormatoInvalido_DeveLancarValidationException(string valor)
     {
         // Act & Assert
-        DomainException ex = Assert.Throws<DomainException>(() => new Email(valor));
+        ValidationException ex = Assert.Throws<ValidationException>(() => new Email(valor));
         Assert.Equal("O e-mail informado é inválido.", ex.Message);
     }
 
@@ -69,7 +69,7 @@ public class EmailTests
     }
     
     [Fact]
-    public void CriarEmail_ExcedeTamanhoMaximo_DeveLancarDomainException()
+    public void CriarEmail_ExcedeTamanhoMaximo_DeveLancarValidationException()
     {
         // Arrange
         const string dominioEmail = "dominio.com";
@@ -77,7 +77,7 @@ public class EmailTests
         string emailGrande = $"{local}@{dominioEmail}";
        
         // Act & Assert
-        DomainException ex = Assert.Throws<DomainException>(() => new Email(emailGrande));
+        ValidationException ex = Assert.Throws<ValidationException>(() => new Email(emailGrande));
         Assert.Contains("E-mail muito longo", ex.Message);
     }
 

@@ -22,24 +22,24 @@ public class SenhaHashTests
     [InlineData(null)]
     [InlineData("")]
     [InlineData("    ")]
-    public void CriarSenhaHash_VaziaOuNula_DeveLancarExcecao(string? senhaVazia)
+    public void CriarSenhaHash_VaziaOuNula_DeveLancarValidationException(string? senhaVazia)
     {
         // Act & Assert
-        DomainException exception = Assert.Throws<DomainException>(() => new SenhaHash(senhaVazia!));
+        ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaHash(senhaVazia!));
         Assert.Equal("Senha não pode ser vazia", exception.Message);
     }
     
     [Fact]
-    public void CriarSenhaHash_TamanhoIncorreto_DeveLancarExcecao()
+    public void CriarSenhaHash_TamanhoIncorreto_DeveLancarValidationException()
     {
         // Arrange
         string senhaComTamanhoIncorreto1 = new('a', SenhaHash.TAMANHO_ESPERADO_SENHA_HASH - 1);
         string senhaComTamanhoIncorreto2 = new('a', SenhaHash.TAMANHO_ESPERADO_SENHA_HASH + 1);
 
         // Act & Assert
-        DomainException exception1 = Assert.Throws<DomainException>(() => new SenhaHash(senhaComTamanhoIncorreto1));
+        ValidationException exception1 = Assert.Throws<ValidationException>(() => new SenhaHash(senhaComTamanhoIncorreto1));
         Assert.Equal("Senha hash com tamanho inesperado", exception1.Message);
-        DomainException exception2 = Assert.Throws<DomainException>(() => new SenhaHash(senhaComTamanhoIncorreto2));
+        ValidationException exception2 = Assert.Throws<ValidationException>(() => new SenhaHash(senhaComTamanhoIncorreto2));
         Assert.Equal("Senha hash com tamanho inesperado", exception2.Message);
     }
     

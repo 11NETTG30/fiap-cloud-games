@@ -19,17 +19,17 @@ public sealed class Email : ValueObject
     public Email(string valor)
     {
         if (string.IsNullOrWhiteSpace(valor))
-            throw new DomainException("E-mail não pode ser vazio");
+            throw new ValidationException("E-mail não pode ser vazio");
 
         string emailNormalizado = valor.Trim().ToLowerInvariant();
         
         if (emailNormalizado.Length > TAMANHO_MAXIMO_EMAIL)
-            throw new DomainException($"E-mail muito longo, excedeu {TAMANHO_MAXIMO_EMAIL} caracteres");
+            throw new ValidationException($"E-mail muito longo, excedeu {TAMANHO_MAXIMO_EMAIL} caracteres");
         
         bool emailValido = ValidarEmail(emailNormalizado);
         
         if (!emailValido)
-            throw new DomainException("O e-mail informado é inválido.");
+            throw new ValidationException("O e-mail informado é inválido.");
 
         Valor = emailNormalizado;
     }
