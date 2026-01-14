@@ -30,6 +30,8 @@ public class DomainExceptionMiddleware
         }
         catch (ValidationException validationException)
         {
+            _logger.LogWarning("400 BadRequest - {Mensagem}",  validationException.Message);
+            
             await GerarProblemDetails(
                 context,
                 StatusCodes.Status400BadRequest,
@@ -38,6 +40,8 @@ public class DomainExceptionMiddleware
         }
         catch (ConflictException conflictException)
         {
+            _logger.LogWarning("409 Conflict - {Mensagem}",  conflictException.Message);
+            
             await GerarProblemDetails(
                 context,
                 StatusCodes.Status409Conflict,
@@ -48,8 +52,6 @@ public class DomainExceptionMiddleware
 
     private async Task GerarProblemDetails(HttpContext context, int statusCode, string title, string detail)
     {
-        _logger.LogWarning(detail);
-        
         ProblemDetails problemDetails = _problemDetailsFactory.CreateProblemDetails(context);
         problemDetails.Status = statusCode;
         problemDetails.Title = title;
