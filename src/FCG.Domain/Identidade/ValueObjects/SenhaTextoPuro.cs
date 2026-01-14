@@ -37,6 +37,12 @@ public sealed class SenhaTextoPuro : ValueObject
         Senha = senha;
     }
 
+    public SenhaTextoPuro(string senha, string confirmacaoSenha) : this(senha)
+    {
+        if(senha != confirmacaoSenha)
+            throw new ValidationException("'Senha' e 'Confirmação de Senha' são diferentes");
+    }
+
     public override string ToString() => Senha;
     
     protected override IEnumerable<object?> ObterComponentesDeIgualdade()

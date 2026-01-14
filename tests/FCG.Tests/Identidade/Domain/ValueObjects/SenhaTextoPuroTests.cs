@@ -167,4 +167,26 @@ public class SenhaTextoPuroTests
         Assert.False(senha == null);
         Assert.True(senha != null);
     }
+
+    [Theory]
+    [InlineData("Senha123!", "Senha123!")]
+    [InlineData("senha@123A", "senha@123A")]
+    public void CriarSenhaComConfirmacao_ConfirmacaoIgual_DeveAceitar(string senhaValida, string confirmacaoSenha)
+    {
+        // Act
+        SenhaTextoPuro senha = new(senhaValida, confirmacaoSenha);
+        
+        // Assert
+        Assert.Equal(senhaValida, senha.ToString());
+    }
+    
+    [Theory]
+    [InlineData("Senha123!", "SEnha123!")]
+    [InlineData("senha@123A", "sEnha@123A")]
+    public void CriarSenhaComConfirmacao_ConfirmacaoDiferente__DeveLancarValidationException(string senhaValida, string confirmacaoSenha)
+    {
+        // Act & Assert
+        ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaValida, confirmacaoSenha));
+        Assert.Equal("'Senha' e 'Confirmação de Senha' são diferentes", exception.Message);
+    }
 }

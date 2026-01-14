@@ -27,10 +27,7 @@ public sealed class CriarUsuarioUseCase
     {
         Email email = new(dto.Email);
 
-        if (dto.Senha != dto.ConfirmacaoSenha)
-            throw new ValidationException("'Senha' e 'Confirmação de Senha' são diferentes");
-        
-        SenhaTextoPuro senhaTextoPuro = new(dto.Senha);
+        SenhaTextoPuro senhaTextoPuro = new(dto.Senha, dto.ConfirmacaoSenha);
         SenhaHash senhaHash = _senhaHasher.GerarHash(senhaTextoPuro);
 
         Usuario usuario = new(
