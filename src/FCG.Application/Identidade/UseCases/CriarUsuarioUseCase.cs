@@ -30,17 +30,12 @@ public sealed class CriarUsuarioUseCase
         SenhaTextoPuro senhaTextoPuro = new(dto.Senha, dto.ConfirmacaoSenha);
         SenhaHash senhaHash = _senhaHasher.GerarHash(senhaTextoPuro);
 
-        Usuario usuario = new(
-            dto.Nome,
-            email,
-            senhaHash,
-            PerfilUsuario.Usuario
-        );
+        Usuario usuario = new(dto.Nome, email, senhaHash, PerfilUsuario.Usuario);
 
         bool emailExiste = await _usuarioRepository.VerificarExistenciaEmail(usuario.Email.Valor);
         
         if (emailExiste)
-            throw new ConflictException("Já existe um usuário cadastrado com esse e-mail.");
+            throw new ConflictException("Já existe um usuário cadastrado com esse e-mail");
 
         await _usuarioRepository.Adicionar(usuario);
         await _usuarioRepository.UnitOfWork.Commit();
