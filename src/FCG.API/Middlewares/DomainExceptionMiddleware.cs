@@ -2,7 +2,7 @@ using FCG.Domain.Shared.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
-namespace FCG.API.Configurations;
+namespace FCG.API.Middlewares;
 
 public class DomainExceptionMiddleware
 {
