@@ -5,15 +5,18 @@ using FCG.Domain.Shared.Exceptions;
 
 namespace FCG.Domain.Identidade.Entities;
 
-public sealed class Usuario : Entity, IAggregateRoot
+public sealed class Usuario : Entity, IAggregateRoot, IAuditavel
 {
     public string Nome { get; private set; }
     public Email Email { get; private set; }
     public SenhaHash SenhaHash { get; private set; }
     public PerfilUsuario Perfil { get; private set; }
     public bool Ativo { get; private set; }
-    public DateTime DataCriacao { get; }
-    public DateTime? DataAtualizacao { get; }
+    public DateTime DataCriacao { get; private set; }
+    public DateTime? DataAtualizacao { get; private set; }
+    
+    private readonly List<RefreshToken> _refreshTokens = [];
+    public IReadOnlyCollection<RefreshToken> RefreshTokens => _refreshTokens.AsReadOnly();
     
     public Usuario
     (

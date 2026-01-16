@@ -13,7 +13,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\FCG.Application\FCG.Application.csproj" />
       <ProjectReference Include="..\FCG.Domain\FCG.Domain.csproj" />
+      <ProjectReference Include="..\FCG.Infrastructure\FCG.Infrastructure.csproj" />
+      <ProjectReference Include="..\FCG.IoC\FCG.IoC.csproj" />
     </ItemGroup>
 
 </Project>
