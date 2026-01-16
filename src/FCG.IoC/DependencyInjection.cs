@@ -6,13 +6,11 @@ public static class DependencyInjection
 {
     extension(IServiceCollection services)
     {
-        public IServiceCollection AddDependencies()
+        public void AddDependencies()
         {
             services.AddDomain();
             services.AddApplication();
             services.AddInfrastructure();
-            
-            return services;
         }
     }
 }

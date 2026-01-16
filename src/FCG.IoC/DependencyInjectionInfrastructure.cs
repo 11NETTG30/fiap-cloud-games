@@ -1,8 +1,6 @@
 using FCG.Application.Identidade.Security;
-using FCG.Domain.Identidade.Entities;
 using FCG.Domain.Identidade.Repositories;
 using FCG.Domain.Identidade.Security;
-using FCG.Domain.Shared.UoW;
 using FCG.Infrastructure.Identidade.Configurations;
 using FCG.Infrastructure.Identidade.Persistence.Repositories;
 using FCG.Infrastructure.Identidade.Security;
@@ -11,7 +9,7 @@ using Microsoft.Extensions.Options;
 
 namespace FCG.IoC;
 
-public static class InfrastructureDI
+public static class DependencyInjectionInfrastructure
 {
     extension(IServiceCollection services)
     {

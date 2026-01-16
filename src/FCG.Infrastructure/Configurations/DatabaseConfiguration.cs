@@ -10,16 +10,15 @@ public static class DatabaseConfiguration
 {
     extension(IServiceCollection services)
     {
-        public IServiceCollection AddDatabase(IConfiguration configuration)
+        public void AddDatabase(IConfiguration configuration)
         {
             string? connectionString = configuration.GetConnectionString("DefaultConnection");
             
-            return services
-                .AddSingleton<AuditoriaSaveChangesInterceptor>()
-                .AddDatabasePostgreSQL<IdentidadeDbContext>(connectionString!);
+            services.AddSingleton<AuditoriaSaveChangesInterceptor>();
+            services.AddDatabasePostgreSQL<IdentidadeDbContext>(connectionString!);
         }
 
-        private IServiceCollection AddDatabasePostgreSQL<T>(string connectionString) where T : DbContext
+        private void AddDatabasePostgreSQL<T>(string connectionString) where T : DbContext
         {
             services.AddDbContext<T>((serviceProvider, options) =>
                 options
@@ -29,8 +28,6 @@ public static class DatabaseConfiguration
                     })
                     .AddInterceptors(serviceProvider.GetRequiredService<AuditoriaSaveChangesInterceptor>())
             );
-
-            return services;
         } 
     }
 }

@@ -1,18 +1,15 @@
-using FCG.Application.Identidade.UseCases;
 using FCG.Domain.Identidade.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FCG.IoC;
 
-public static class DomainDI
+public static class DependencyInjectionDomain
 {
     extension(IServiceCollection services)
     {
-        internal IServiceCollection AddDomain()
+        internal void AddDomain()
         {
             services.AddScoped<RefreshTokenDomainService>();
-            
-            return services;
         }
     }
 }

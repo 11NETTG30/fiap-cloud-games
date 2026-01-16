@@ -3,17 +3,15 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FCG.IoC;
 
-public static class ApplicationDI
+public static class DependencyInjectionApplication
 {
     extension(IServiceCollection services)
     {
-        internal IServiceCollection AddApplication()
+        internal void AddApplication()
         {
             services.AddScoped<LoginUseCase>();
             services.AddScoped<LogoutUseCase>();
             services.AddScoped<RefreshTokenUseCase>();
-            
-            return services;
         }
     }
 }
