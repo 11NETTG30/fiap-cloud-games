@@ -9,6 +9,7 @@ public static class DependencyInjectionApplication
     {
         internal void AddApplication()
         {
+            services.AddScoped<CriarUsuarioUseCase>();
             services.AddScoped<LoginUseCase>();
             services.AddScoped<LogoutUseCase>();
             services.AddScoped<RefreshTokenUseCase>();
