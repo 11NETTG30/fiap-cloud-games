@@ -1,3 +1,4 @@
+using DotNetEnv;
 using FCG.API.Configurations;
 using FCG.API.Middlewares;
 using FCG.Infrastructure.Configurations;
@@ -5,6 +6,9 @@ using FCG.Infrastructure.Identidade.Configurations;
 using FCG.IoC;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+Env.Load();
+builder.Configuration.AddEnvironmentVariables();
 
 builder.AddLoggingConfiguration();
 builder.Services.AddControllers();

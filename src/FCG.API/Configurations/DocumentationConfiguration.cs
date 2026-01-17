@@ -22,11 +22,7 @@ public static class DocumentationConfiguration
                             API Backend para plataforma de jogos desenvolvida como projeto de pós-graduação em Arquitetura de Sistemas .NET.
 
                             **Contextos:**
-                            - Biblioteca                       
-                            - Catálogo
                             - Identidade
-                            - Pedido                       
-                            - Promoção
                             """,
                         Contact = new OpenApiContact
                         {
