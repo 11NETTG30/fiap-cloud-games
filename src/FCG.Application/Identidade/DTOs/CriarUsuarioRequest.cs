@@ -1,6 +1,6 @@
 namespace FCG.Application.Identidade.DTOs;
 
-public record CriarUsuarioDTO(
+public record CriarUsuarioRequest(
     string Nome,
     string Email,
     string Senha,

@@ -10,7 +10,7 @@ public sealed class Email : ValueObject
     
     public const short TAMANHO_MAXIMO_EMAIL = 256;
     
-    private static readonly Regex _emailRegex = new(
+    public static readonly Regex emailRegex = new(
         @"^[a-z0-9]+([._-][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{2,}$",
         RegexOptions.Compiled,
         TimeSpan.FromMilliseconds(200)
@@ -41,5 +41,5 @@ public sealed class Email : ValueObject
         yield return Valor;
     }
     
-    private static bool ValidarEmail(string email) => _emailRegex.IsMatch(email);
+    private static bool ValidarEmail(string email) => emailRegex.IsMatch(email);
 }

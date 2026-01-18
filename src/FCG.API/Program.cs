@@ -11,9 +11,10 @@ Env.Load();
 builder.Configuration.AddEnvironmentVariables();
 
 builder.AddLoggingConfiguration();
-builder.Services.AddControllers();
+builder.Services.AddControllersConfiguration();
 builder.Services.AddDocumentation();
 builder.Services.AddProblemDetailsConfiguration();
+builder.Services.ConfigureModelStateInvalid();
 
 builder.Services.AddDatabase(builder.Configuration);
 builder.Services.AddJwtAuthentication(builder.Configuration);

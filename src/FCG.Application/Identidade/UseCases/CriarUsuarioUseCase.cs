@@ -23,14 +23,14 @@ public sealed class CriarUsuarioUseCase
         _senhaHasher = senhaHasher;
     }
 
-    public async Task<Guid> Executar(CriarUsuarioDTO dto)
+    public async Task<Guid> Executar(CriarUsuarioRequest request)
     {
-        Email email = new(dto.Email);
+        Email email = new(request.Email);
 
-        SenhaTextoPuro senhaTextoPuro = new(dto.Senha, dto.ConfirmacaoSenha);
+        SenhaTextoPuro senhaTextoPuro = new(request.Senha, request.ConfirmacaoSenha);
         SenhaHash senhaHash = _senhaHasher.GerarHash(senhaTextoPuro);
 
-        Usuario usuario = new(dto.Nome, email, senhaHash, PerfilUsuario.Usuario);
+        Usuario usuario = new(request.Nome, email, senhaHash, PerfilUsuario.Usuario);
 
         bool emailExiste = await _usuarioRepository.VerificarExistenciaEmail(usuario.Email.Valor);
         

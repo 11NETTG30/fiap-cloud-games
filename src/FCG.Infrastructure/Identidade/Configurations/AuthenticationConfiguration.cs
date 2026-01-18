@@ -10,7 +10,7 @@ public static class AuthenticationConfiguration
 {
     extension(IServiceCollection services)
     {
-        public IServiceCollection AddJwtAuthentication(IConfiguration configuration)
+        public void AddJwtAuthentication(IConfiguration configuration)
         {
             IConfigurationSection jwtSettings = configuration.GetSection("JwtSettings");
             
@@ -53,8 +53,6 @@ public static class AuthenticationConfiguration
                 });
 
             services.AddAuthorization();
-
-            return services;
         }
     }
 }

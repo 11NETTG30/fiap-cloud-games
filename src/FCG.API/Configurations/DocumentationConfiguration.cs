@@ -7,7 +7,7 @@ public static class DocumentationConfiguration
 {
     extension(IServiceCollection services)
     {
-        public IServiceCollection AddDocumentation()
+        public void AddDocumentation()
         {
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             services.AddOpenApi(options =>
@@ -34,8 +34,6 @@ public static class DocumentationConfiguration
                     return Task.CompletedTask;
                 });
             });
-            
-            return services;
         }
     }
 

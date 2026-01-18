@@ -23,16 +23,16 @@ public sealed class SenhaTextoPuro : ValueObject
         }
 
         if (!senha.Any(char.IsUpper))
-            throw new ValidationException("Senha deve conter maiúsculas");
+            throw new ValidationException("A senha deve conter ao menos uma letra maiúscula");
             
         if (!senha.Any(char.IsLower))
-            throw new ValidationException("Senha deve conter minúsculas");
+            throw new ValidationException("A senha deve conter ao menos uma letra minúscula");
             
         if (!senha.Any(char.IsDigit))
-            throw new ValidationException("Senha deve conter números");
+            throw new ValidationException("A senha deve conter ao menos um número");
             
         if (!senha.Any(c => "!@#$%^&*()".Contains(c)))
-            throw new ValidationException("Senha deve conter caracteres especiais");
+            throw new ValidationException("A senha deve conter ao menos um caractere especial");
         
         Senha = senha;
     }

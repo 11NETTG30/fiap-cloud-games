@@ -4,7 +4,7 @@ public static class ProblemDetailsConfiguration
 {
     extension(IServiceCollection services)
     {
-        public IServiceCollection AddProblemDetailsConfiguration()
+        public void AddProblemDetailsConfiguration()
         {
             services.AddProblemDetails(options =>
             {
@@ -49,8 +49,6 @@ public static class ProblemDetailsConfiguration
                     }
                 };
             });
-            
-            return services;
         }
     }
 }

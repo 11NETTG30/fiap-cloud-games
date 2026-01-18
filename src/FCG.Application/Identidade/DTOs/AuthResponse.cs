@@ -1,4 +1,4 @@
-namespace FCG.Application.Identidade.DTOs.Auth;
+namespace FCG.Application.Identidade.DTOs;
 
 public record AuthResponse(
     string AccessToken,
