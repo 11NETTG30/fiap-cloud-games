@@ -84,7 +84,7 @@ public class SenhaTextoPuroTests
 
         // Act & Assert
         ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaSemMaiuscula));
-        Assert.Equal("Senha deve conter maiúsculas", exception.Message);
+        Assert.Equal("A senha deve conter ao menos uma letra maiúscula", exception.Message);
     }
 
     [Fact]
@@ -95,7 +95,7 @@ public class SenhaTextoPuroTests
 
         // Act & Assert
         ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaSemMinuscula));
-        Assert.Equal("Senha deve conter minúsculas", exception.Message);
+        Assert.Equal("A senha deve conter ao menos uma letra minúscula", exception.Message);
     }
     
     [Fact]
@@ -106,7 +106,7 @@ public class SenhaTextoPuroTests
 
         // Act & Assert
         ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaSemNumero));
-        Assert.Equal("Senha deve conter números", exception.Message);
+        Assert.Equal("A senha deve conter ao menos um número", exception.Message);
     }
 
     [Fact]
@@ -117,7 +117,7 @@ public class SenhaTextoPuroTests
 
         // Act & Assert
         ValidationException exception = Assert.Throws<ValidationException>(() => new SenhaTextoPuro(senhaSemEspecial));
-        Assert.Equal("Senha deve conter caracteres especiais", exception.Message);
+        Assert.Equal("A senha deve conter ao menos um caractere especial", exception.Message);
     }
     
     [Fact]

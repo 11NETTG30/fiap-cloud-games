@@ -1,4 +1,4 @@
-using FCG.Application.Identidade.DTOs.Auth;
+using FCG.Application.Identidade.DTOs;
 using FCG.Application.Identidade.Security;
 using FCG.Domain.Identidade.Entities;
 using FCG.Domain.Identidade.Repositories;

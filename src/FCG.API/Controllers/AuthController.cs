@@ -1,6 +1,5 @@
-using FCG.Application.Identidade.DTOs.Auth;
+using FCG.Application.Identidade.DTOs;
 using FCG.Application.Identidade.UseCases;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FCG.API.Controllers;
@@ -13,28 +12,30 @@ public class AuthController : ControllerBase
     private readonly LoginUseCase _loginUseCase;
     private readonly RefreshTokenUseCase _refreshTokenUseCase;
     private readonly LogoutUseCase _logoutUseCase;
-    
+    private readonly CriarUsuarioUseCase _criarUsuarioUseCase;
+
     public AuthController
     (
         ILogger<AuthController> logger,
         LoginUseCase loginUseCase,
         RefreshTokenUseCase refreshTokenUseCase,
-        LogoutUseCase logoutUseCase
+        LogoutUseCase logoutUseCase,
+        CriarUsuarioUseCase criarUsuarioUseCase
     )
     {
         _logger = logger;
         _loginUseCase = loginUseCase;
         _refreshTokenUseCase = refreshTokenUseCase;
         _logoutUseCase = logoutUseCase;
+        _criarUsuarioUseCase = criarUsuarioUseCase;
     }
 
     [HttpPost("registrar")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<ActionResult> Registrar()
+    public async Task<ActionResult> Registrar([FromBody] CriarUsuarioRequest request)
     {
-        await Task.Delay(200);
-        
-        // TODO: Analisar se já retorna o JWT ou somente a uri do login no header
+        await _criarUsuarioUseCase.Executar(request);
+
         return Created();
     }
     

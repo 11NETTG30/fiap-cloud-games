@@ -7,7 +7,7 @@ public static class DocumentationConfiguration
 {
     extension(IServiceCollection services)
     {
-        public IServiceCollection AddDocumentation()
+        public void AddDocumentation()
         {
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             services.AddOpenApi(options =>
@@ -22,11 +22,7 @@ public static class DocumentationConfiguration
                             API Backend para plataforma de jogos desenvolvida como projeto de pós-graduação em Arquitetura de Sistemas .NET.
 
                             **Contextos:**
-                            - Biblioteca                       
-                            - Catálogo
                             - Identidade
-                            - Pedido                       
-                            - Promoção
                             """,
                         Contact = new OpenApiContact
                         {
@@ -38,8 +34,6 @@ public static class DocumentationConfiguration
                     return Task.CompletedTask;
                 });
             });
-            
-            return services;
         }
     }
 
