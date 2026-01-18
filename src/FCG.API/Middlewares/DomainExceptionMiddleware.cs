@@ -7,18 +7,15 @@ namespace FCG.API.Middlewares;
 public class DomainExceptionMiddleware
 {
     private readonly RequestDelegate _next;
-    private readonly ILogger<DomainExceptionMiddleware> _logger;
     private readonly ProblemDetailsFactory _problemDetailsFactory;
     
     public DomainExceptionMiddleware
     (
         RequestDelegate next,
-        ILogger<DomainExceptionMiddleware> logger,
         ProblemDetailsFactory problemDetailsFactory
     )
     {
         _next = next;
-        _logger = logger;
         _problemDetailsFactory = problemDetailsFactory;
     }
 
@@ -30,8 +27,6 @@ public class DomainExceptionMiddleware
         }
         catch (ValidationException validationException)
         {
-            _logger.LogWarning("400 BadRequest - {Mensagem}",  validationException.Message);
-            
             await GerarProblemDetails(
                 context,
                 StatusCodes.Status400BadRequest,
@@ -40,8 +35,6 @@ public class DomainExceptionMiddleware
         }
         catch (ConflictException conflictException)
         {
-            _logger.LogWarning("409 Conflict - {Mensagem}",  conflictException.Message);
-            
             await GerarProblemDetails(
                 context,
                 StatusCodes.Status409Conflict,
