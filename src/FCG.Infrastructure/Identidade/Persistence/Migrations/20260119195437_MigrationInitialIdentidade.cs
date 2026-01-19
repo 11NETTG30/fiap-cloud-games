@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace FCG.Infrastructure.Migrations
+namespace FCG.Infrastructure.Identidade.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class MigrationInicialIdentidade : Migration
+    public partial class MigrationInitialIdentidade : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
