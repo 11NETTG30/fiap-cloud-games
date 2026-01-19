@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace FCG.Domain.Identidade.Services;
 
-public sealed class RefreshTokenDomainService
+public sealed class RefreshTokenDomainService : IRefreshTokenDomainService
 {
     private readonly IRefreshTokenRepository _refreshTokenRepository;
     private readonly ILogger<RefreshTokenDomainService> _logger;

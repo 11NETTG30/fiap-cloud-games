@@ -14,7 +14,7 @@ public sealed class RefreshTokenUseCase
     private readonly IRefreshTokenRepository _refreshTokenRepository;
     private readonly IJwtService _jwtService;
     private readonly ITokenSettings _tokenSettings;
-    private readonly RefreshTokenDomainService _refreshTokenDomainService;
+    private readonly IRefreshTokenDomainService _refreshTokenDomainService;
     
     public RefreshTokenUseCase
     (
@@ -23,7 +23,7 @@ public sealed class RefreshTokenUseCase
         IRefreshTokenRepository refreshTokenRepository,
         IJwtService jwtService,
         ITokenSettings tokenSettings,
-        RefreshTokenDomainService  refreshTokenDomainService
+        IRefreshTokenDomainService  refreshTokenDomainService
     )
     {
         _logger = logger;

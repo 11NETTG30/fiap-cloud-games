@@ -9,7 +9,7 @@ public static class DependencyInjectionDomain
     {
         internal void AddDomain()
         {
-            services.AddScoped<RefreshTokenDomainService>();
+            services.AddScoped<IRefreshTokenDomainService, RefreshTokenDomainService>();
         }
     }
 }
