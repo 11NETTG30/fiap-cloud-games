@@ -20,6 +20,7 @@ public static class DependencyInjectionApplication
             services.AddScoped<ListarTodosUsuariosUseCase>();
             services.AddScoped<LoginUseCase>();
             services.AddScoped<LogoutUseCase>();
+            services.AddScoped<ObterUsuarioPorIdUseCase>();
             services.AddScoped<RefreshTokenUseCase>();
         }
 

@@ -12,13 +12,16 @@ namespace FCG.API.Controllers;
 public class UsuarioController : ControllerBase
 {
     private readonly ListarTodosUsuariosUseCase _listarTodosUsuariosUseCase;
+    private readonly ObterUsuarioPorIdUseCase _obterUsuarioPorIdUseCase;
     
     public UsuarioController
     (
-        ListarTodosUsuariosUseCase listarTodosUsuariosUseCase
+        ListarTodosUsuariosUseCase listarTodosUsuariosUseCase,
+        ObterUsuarioPorIdUseCase obterUsuarioPorIdUseCase
     )
     {
         _listarTodosUsuariosUseCase = listarTodosUsuariosUseCase;
+        _obterUsuarioPorIdUseCase = obterUsuarioPorIdUseCase;
     }
 
     [HttpGet]
@@ -32,11 +35,11 @@ public class UsuarioController : ControllerBase
     
     [HttpGet("{id:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<string>> Obter(Guid id)
+    public async Task<ActionResult<UsuarioDto>> Obter(Guid id)
     {
-        await Task.Delay(100);
+        UsuarioDto? usuario = await _obterUsuarioPorIdUseCase.Executar(id);
         
-        return Ok($"Usuário com id '{id}'");
+        return Ok(usuario);
     }
 
     [HttpPatch("{id:guid}/perfil-usuario")]
