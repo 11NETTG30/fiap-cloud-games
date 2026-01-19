@@ -6,9 +6,8 @@ namespace FCG.API.Controllers;
 
 [ApiController]
 [Route("api/auth")]
-public class AuthController : ControllerBase
+public sealed class AuthController : ControllerBase
 {
-    private readonly ILogger<AuthController> _logger;
     private readonly LoginUseCase _loginUseCase;
     private readonly RefreshTokenUseCase _refreshTokenUseCase;
     private readonly LogoutUseCase _logoutUseCase;
@@ -16,14 +15,12 @@ public class AuthController : ControllerBase
 
     public AuthController
     (
-        ILogger<AuthController> logger,
         LoginUseCase loginUseCase,
         RefreshTokenUseCase refreshTokenUseCase,
         LogoutUseCase logoutUseCase,
         CriarUsuarioUseCase criarUsuarioUseCase
     )
     {
-        _logger = logger;
         _loginUseCase = loginUseCase;
         _refreshTokenUseCase = refreshTokenUseCase;
         _logoutUseCase = logoutUseCase;

@@ -5,6 +5,7 @@ namespace FCG.Domain.Identidade.Repositories;
 
 public interface IUsuarioRepository : IRepository<Usuario>
 {
+    Task<List<Usuario>> ListarTodos();
     Task<Usuario?> ObterPorId(Guid id);
     Task<Usuario?> ObterPorEmail(string email);
     Task Adicionar(Usuario usuario);

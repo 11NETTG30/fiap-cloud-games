@@ -1,20 +1,19 @@
-using FCG.Domain.Shared.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FCG.API.Controllers;
 
 [ApiController]
 [Route("api/conta")]
-public class ContaController : ControllerBase
+[Authorize]
+public sealed class ContaController : ControllerBase
 {
-    private readonly ILogger<ContaController> _logger;
-    
     public ContaController
     (
-        ILogger<ContaController> logger
+        
     )
     {
-        _logger = logger;
+        
     }
 
     [HttpGet]
@@ -33,15 +32,6 @@ public class ContaController : ControllerBase
         await Task.Delay(200);
         
         return NoContent();
-    }
-
-    [HttpGet("teste")]
-    public void Teste()
-    {
-        _logger.LogInformation("Testando 123");
-        _logger.LogInformation("Testando 456");
-        
-        throw new ValidationException("Testando 123");
     }
     
 }

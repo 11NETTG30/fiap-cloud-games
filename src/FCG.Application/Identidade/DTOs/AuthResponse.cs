@@ -5,5 +5,5 @@ public record AuthResponse(
     Guid RefreshToken,
     DateTime ExpiracaoAccessToken,
     DateTime ExpiracaoRefreshToken,
-    UsuarioDto Usuario
+    UsuarioTokenDto Usuario
 );

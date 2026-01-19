@@ -68,7 +68,7 @@ public sealed class RefreshTokenUseCase
             RefreshToken: novoRefreshToken.Token,
             ExpiracaoAccessToken: DateTime.UtcNow.AddMinutes(_tokenSettings.ExpiracaoAccessTokenMinutos),
             ExpiracaoRefreshToken: novoRefreshToken.ExpiracaoEm,
-            Usuario: new UsuarioDto
+            Usuario: new UsuarioTokenDto
             (
                 Id: usuario.Id,
                 Nome: usuario.Nome,

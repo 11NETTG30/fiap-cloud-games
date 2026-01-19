@@ -14,6 +14,13 @@ public sealed class UsuarioRepository : IUsuarioRepository
     {
         _dbContext = dbContext;
     }
+
+    public async Task<List<Usuario>> ListarTodos()
+    {
+        return await _dbContext.Usuarios
+            .AsNoTracking()
+            .ToListAsync();
+    }
     
     public async Task<Usuario?> ObterPorId(Guid id)
     {

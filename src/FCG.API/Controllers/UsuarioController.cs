@@ -1,29 +1,33 @@
+using FCG.Application.Identidade.DTOs;
+using FCG.Application.Identidade.UseCases;
+using FCG.Infrastructure.Identidade.Security;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FCG.API.Controllers;
 
 [ApiController]
 [Route("api/usuarios")]
+[Authorize(Roles = RoleNames.Admin)]
 public class UsuarioController : ControllerBase
 {
-    private readonly ILogger<UsuarioController> _logger;
+    private readonly ListarTodosUsuariosUseCase _listarTodosUsuariosUseCase;
     
-    public UsuarioController(ILogger<UsuarioController> logger)
+    public UsuarioController
+    (
+        ListarTodosUsuariosUseCase listarTodosUsuariosUseCase
+    )
     {
-        _logger = logger;
+        _listarTodosUsuariosUseCase = listarTodosUsuariosUseCase;
     }
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<List<string>>> Listar()
+    public async Task<ActionResult<IEnumerable<UsuarioDto>>> Listar()
     {
-        await Task.Delay(100);
+        IEnumerable<UsuarioDto> usuarios = await _listarTodosUsuariosUseCase.Executar();
         
-        //Sempre usar paginação em listas
-        //Ver melhor forma de padronizar sem restringir
-
-        List<string> lista = ["1", "2", "3"];
-        return Ok(lista);
+        return Ok(usuarios);
     }
     
     [HttpGet("{id:guid}")]
@@ -44,41 +48,4 @@ public class UsuarioController : ControllerBase
         return NoContent();
     }
     
-    
-    
-    // [HttpPost]
-    // public async Task<ActionResult<Guid>> Criar()
-    // {
-    //     await Task.Delay(100);
-    //     
-    //     Guid id = Guid.NewGuid();
-    //     string uri = Url.Action(nameof(Obter), new { id })!;
-    //     
-    //     return Created(uri, id);
-    // }
-    //
-    // //Não teremos DELETE, mas sempre que não tiver resposta na requisição, deve retorno NoContent
-    // [HttpDelete]
-    // public async Task<ActionResult> Apagar()
-    // {
-    //     await Task.Delay(100);
-    //     
-    //     return NoContent();
-    // }
-    //
-    // [HttpGet("Teste")]
-    // public ActionResult<string> Teste()
-    // {
-    //     return Ok(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
-    // }
-    //
-    // [HttpGet("Erro")]
-    // public ActionResult<string> Erro()
-    // {
-    //     _logger.LogInformation("Iniciando no método");
-    //     _logger.LogInformation("Pagamento confirmado");
-    //     _logger.LogInformation("Enviando e-mail de validação");
-    //     
-    //     throw new ConflictException("E-mail já cadastrado");
-    // }
 }
