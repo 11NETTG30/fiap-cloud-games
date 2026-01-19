@@ -1,9 +1,11 @@
 using FCG.Application.Identidade.Security;
+using FCG.Application.Shared;
 using FCG.Domain.Identidade.Repositories;
 using FCG.Domain.Identidade.Security;
 using FCG.Infrastructure.Identidade.Configurations;
 using FCG.Infrastructure.Identidade.Persistence.Repositories;
 using FCG.Infrastructure.Identidade.Security;
+using FCG.Infrastructure.Shared;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
@@ -17,8 +19,9 @@ public static class DependencyInjectionInfrastructure
         {
             services.AddRepositories();
             
-            services.AddScoped<IJwtService, JwtService>();
-            services.AddScoped<ISenhaHasher, Argon2IdSenhaHasher>();
+            services.AddScoped<IInformacoesUsuarioLogado, InformacoesUsuarioLogado>();
+            services.AddSingleton<IJwtService, JwtService>();
+            services.AddSingleton<ISenhaHasher, Argon2IdSenhaHasher>();
             
             services.AddSingleton<ITokenSettings>(provider =>
             {
