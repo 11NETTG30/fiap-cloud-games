@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace FCG.Application.Identidade.Validators;
 
-public class CriarUsuarioRequestValidator : AbstractValidator<CriarUsuarioRequest>
+public sealed class CriarUsuarioRequestValidator : AbstractValidator<CriarUsuarioRequest>
 {
     public CriarUsuarioRequestValidator()
     {
@@ -19,16 +19,7 @@ public class CriarUsuarioRequestValidator : AbstractValidator<CriarUsuarioReques
             .WithMessage("'{PropertyName}' é um endereço de email inválido.");
         
         RuleFor(request => request.Senha)
-            .NotEmpty()
-            .Length(8, 128)
-            .Must(s => s.Any(char.IsUpper))
-            .WithMessage("'{PropertyName}' deve conter ao menos uma letra maiúscula.")
-            .Must(s => s.Any(char.IsLower))
-            .WithMessage("'{PropertyName}' deve conter ao menos uma letra minúscula.")
-            .Must(s => s.Any(char.IsDigit))
-            .WithMessage("'{PropertyName}' deve conter ao menos um número.")
-            .Must(s => s.Any(c => "!@#$%^&*()".Contains(c)))
-            .WithMessage("'{PropertyName}' deve conter ao menos um caractere especial");
+            .SenhaValida();
         
         RuleFor(request => request.ConfirmacaoSenha)
             .NotEmpty()
