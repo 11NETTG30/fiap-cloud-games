@@ -1,9 +1,9 @@
 ﻿# language: pt-BR
 
 Funcionalidade: Criar usuário
-  # Para permitir o cadastro de novos usuários
-  # Como sistema
-  # Quero criar um usuário quando os dados forem válidos
+  Para permitir o cadastro de novos usuários
+  Como sistema
+  Quero criar um usuário quando os dados forem válidos
 
 Cenário: Criar usuário com dados válidos
   Dado que não existe usuário cadastrado com o e-mail "gabriel@email.com"
