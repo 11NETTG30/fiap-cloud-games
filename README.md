@@ -72,7 +72,7 @@ No console do Gerenciador de Pacotes, selecione o projeto padrão (ex: `src\FCG.
 
 ```powershell
 # Criar uma nova migration
-Add-Migration MigrationInicialIdentidade -Context IdentidadeDbContext -OutputDir Identidade/Persistance
+Add-Migration InitialIdentidade -Context IdentidadeDbContext -OutputDir Identidade/Persistence/Migrations
 
 # Aplicar as alterações no banco de dados
 Update-Database
