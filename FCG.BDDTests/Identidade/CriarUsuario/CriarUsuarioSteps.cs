@@ -8,7 +8,7 @@ using FCG.Domain.Identidade.ValueObjects;
 using FCG.Domain.Shared.Exceptions;
 using Moq;
 
-namespace FCG.BDDTests.StepDefinitions;
+namespace FCG.BDDTests.Identidade.CriarUsuario;
 
 [Binding]
 public sealed class CriarUsuarioSteps

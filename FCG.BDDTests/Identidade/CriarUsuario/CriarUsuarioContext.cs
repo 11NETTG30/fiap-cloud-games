@@ -3,7 +3,7 @@ using FCG.Domain.Identidade.Entities;
 using FCG.Domain.Identidade.Repositories;
 using Moq;
 
-namespace FCG.BDDTests.Support
+namespace FCG.BDDTests.Identidade.CriarUsuario
 {
 	public sealed class CriarUsuarioContext
 	{

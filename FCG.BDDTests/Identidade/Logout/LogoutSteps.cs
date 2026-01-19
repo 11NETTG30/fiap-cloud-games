@@ -4,7 +4,7 @@ using FCG.BDDTests.Support;
 using FCG.Domain.Identidade.Entities;
 using Moq;
 
-namespace FCG.BDDTests.StepDefinitions
+namespace FCG.BDDTests.Identidade.Logout
 {
 	[Binding]
 	public sealed class LogoutSteps

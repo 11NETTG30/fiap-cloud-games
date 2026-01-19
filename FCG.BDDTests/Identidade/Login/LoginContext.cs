@@ -4,7 +4,7 @@ using FCG.Domain.Identidade.Repositories;
 using FCG.Domain.Identidade.Security;
 using Moq;
 
-namespace FCG.BDDTests.Support
+namespace FCG.BDDTests.Identidade.Login
 {
 	public sealed class LoginContext
 	{

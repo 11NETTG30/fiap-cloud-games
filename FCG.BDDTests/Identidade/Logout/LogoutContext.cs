@@ -1,7 +1,7 @@
 ﻿using FCG.Domain.Identidade.Repositories;
 using Moq;
 
-namespace FCG.BDDTests.Support
+namespace FCG.BDDTests.Identidade.Logout
 {
 	public sealed class LogoutContext
 	{

@@ -1,5 +1,6 @@
 ﻿using FCG.Application.Identidade.DTOs;
 using FCG.Application.Identidade.UseCases;
+using FCG.BDDTests.Identidade.Login;
 using FCG.BDDTests.Support;
 using FCG.Domain.Identidade.Entities;
 using FCG.Domain.Identidade.Enums;

@@ -11,26 +11,26 @@
 #region Designer generated code
 #pragma warning disable
 using Reqnroll;
-namespace FCG.BDDTests.Features
+namespace FCG.BDDTests.Identidade.Logout
 {
     
     
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "3.0.0.0")]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::NUnit.Framework.TestFixtureAttribute()]
-    [global::NUnit.Framework.DescriptionAttribute("Login de usuário")]
+    [global::NUnit.Framework.DescriptionAttribute("Logout")]
     [global::NUnit.Framework.FixtureLifeCycleAttribute(global::NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    public partial class LoginDeUsuarioFeature
+    public partial class LogoutFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("pt-BR"), "Features", "Login de usuário", "  Para permitir autenticação no sistema\r\n  Como usuário\r\n  Quero realizar login c" +
-                "om e-mail e senha válidos", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("pt-BR"), "Identidade/Logout", "Logout", "  Para encerrar a sessão do usuário\r\n  Como sistema\r\n  Quero invalidar o refresh " +
+                "token no logout", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
-#line 1 "Login.feature"
+#line 1 "Logout.feature"
 #line hidden
         
         [global::NUnit.Framework.OneTimeSetUpAttribute()]
@@ -106,17 +106,17 @@ namespace FCG.BDDTests.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/Login.feature.ndjson", 5);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Identidade/Logout/Logout.feature.ndjson", 4);
         }
         
         [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Login com credenciais válidas")]
-        public async global::System.Threading.Tasks.Task LoginComCredenciaisValidas()
+        [global::NUnit.Framework.DescriptionAttribute("Logout com refresh token válido")]
+        public async global::System.Threading.Tasks.Task LogoutComRefreshTokenValido()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login com credenciais válidas", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Logout com refresh token válido", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 8
@@ -130,33 +130,29 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 9
-  await testRunner.GivenAsync("que existe um usuário cadastrado para login com e-mail \"gabriel@email.com\" e senh" +
-                        "a válida", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
+  await testRunner.GivenAsync("que existe um refresh token válido", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
 #line 10
-  await testRunner.WhenAsync("o login é realizado com e-mail \"gabriel@email.com\" e senha \"123456\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
+  await testRunner.WhenAsync("o logout é realizado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
 #line hidden
 #line 11
-  await testRunner.ThenAsync("deve ser retornado um access token", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
-#line hidden
-#line 12
-  await testRunner.AndAsync("deve ser gerado um refresh token", ((string)(null)), ((global::Reqnroll.Table)(null)), "E ");
+  await testRunner.ThenAsync("o refresh token deve ser revogado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
         [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Login com senha inválida")]
-        public async global::System.Threading.Tasks.Task LoginComSenhaInvalida()
+        [global::NUnit.Framework.DescriptionAttribute("Logout com refresh token inexistente")]
+        public async global::System.Threading.Tasks.Task LogoutComRefreshTokenInexistente()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "1";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login com senha inválida", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Logout com refresh token inexistente", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 14
+#line 13
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -166,48 +162,14 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
+#line 14
+  await testRunner.GivenAsync("que não existe refresh token", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
+#line hidden
 #line 15
-  await testRunner.GivenAsync("que existe um usuário cadastrado para login com e-mail \"gabriel@email.com\" e senh" +
-                        "a inválida", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
+  await testRunner.WhenAsync("o logout é realizado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
 #line hidden
 #line 16
-  await testRunner.WhenAsync("o login é realizado com e-mail \"gabriel@email.com\" e senha \"123456\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
-#line hidden
-#line 17
-  await testRunner.ThenAsync("deve ocorrer um erro de autenticação", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Login com e-mail inexistente")]
-        public async global::System.Threading.Tasks.Task LoginComE_MailInexistente()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "2";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login com e-mail inexistente", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
-            string[] tagsOfRule = ((string[])(null));
-            global::Reqnroll.RuleInfo ruleInfo = null;
-#line 19
-this.ScenarioInitialize(scenarioInfo, ruleInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                await testRunner.SkipScenarioAsync();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 20
-  await testRunner.GivenAsync("que não existe usuário cadastrado para login com o e-mail \"gabriel@email.com\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
-#line hidden
-#line 21
-  await testRunner.WhenAsync("o login é realizado com e-mail \"gabriel@email.com\" e senha \"123456\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
-#line hidden
-#line 22
-  await testRunner.ThenAsync("deve ocorrer um erro de autenticação", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
+  await testRunner.ThenAsync("nenhuma revogação deve ocorrer", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
