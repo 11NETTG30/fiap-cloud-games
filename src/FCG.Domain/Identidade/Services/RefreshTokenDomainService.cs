@@ -1,19 +1,19 @@
 using FCG.Domain.Identidade.Entities;
 using FCG.Domain.Identidade.Enums;
 using FCG.Domain.Identidade.Repositories;
-using Microsoft.Extensions.Logging;
+using FCG.Domain.Shared.Abstractions;
 
 namespace FCG.Domain.Identidade.Services;
 
 public sealed class RefreshTokenDomainService : IRefreshTokenDomainService
 {
     private readonly IRefreshTokenRepository _refreshTokenRepository;
-    private readonly ILogger<RefreshTokenDomainService> _logger;
+    private readonly IDomainLogger<RefreshTokenDomainService> _logger;
 
     public RefreshTokenDomainService
     (
         IRefreshTokenRepository refreshTokenRepository,
-        ILogger<RefreshTokenDomainService> logger
+        IDomainLogger<RefreshTokenDomainService> logger
     )
     {
         _refreshTokenRepository = refreshTokenRepository;

@@ -2,6 +2,7 @@ using FCG.Application.Identidade.Security;
 using FCG.Application.Shared;
 using FCG.Domain.Identidade.Repositories;
 using FCG.Domain.Identidade.Security;
+using FCG.Domain.Shared.Abstractions;
 using FCG.Infrastructure.Identidade.Configurations;
 using FCG.Infrastructure.Identidade.Persistence.Repositories;
 using FCG.Infrastructure.Identidade.Security;
@@ -18,7 +19,8 @@ public static class DependencyInjectionInfrastructure
         internal void AddInfrastructure()
         {
             services.AddRepositories();
-            
+
+            services.AddSingleton(typeof(IDomainLogger<>), typeof(DomainLogger<>));
             services.AddScoped<IInformacoesUsuarioLogado, InformacoesUsuarioLogado>();
             services.AddSingleton<IJwtService, JwtService>();
             services.AddSingleton<ISenhaHasher, Argon2IdSenhaHasher>();
