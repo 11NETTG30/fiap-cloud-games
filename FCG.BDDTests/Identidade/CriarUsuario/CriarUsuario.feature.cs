@@ -119,7 +119,7 @@ namespace FCG.BDDTests.Identidade.CriarUsuario
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Criar usuário com dados válidos", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 8
+#line 6
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -129,17 +129,17 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 9
+#line 7
   await testRunner.GivenAsync("que não existe usuário cadastrado com o e-mail \"gabriel@email.com\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-#line 10
+#line 8
   await testRunner.WhenAsync("o usuário é criado com nome \"Gabriel\", e-mail \"gabriel@email.com\" e senha \"@Bc123" +
                         "456789\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
 #line hidden
-#line 11
+#line 9
   await testRunner.ThenAsync("o usuário deve ser persistido", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
 #line hidden
-#line 12
+#line 10
   await testRunner.AndAsync("deve ser retornado um identificador válido", ((string)(null)), ((global::Reqnroll.Table)(null)), "E ");
 #line hidden
             }
@@ -156,7 +156,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Criar usuário com e-mail já existente", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 14
+#line 12
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -166,14 +166,14 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 15
+#line 13
   await testRunner.GivenAsync("que já existe usuário cadastrado com o e-mail \"gabriel@email.com\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-#line 16
+#line 14
   await testRunner.WhenAsync("o usuário é criado com nome \"Gabriel\", e-mail \"gabriel@email.com\" e senha \"@Bc123" +
                         "456789\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
 #line hidden
-#line 17
+#line 15
   await testRunner.ThenAsync("deve ocorrer um erro de conflito", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
 #line hidden
             }

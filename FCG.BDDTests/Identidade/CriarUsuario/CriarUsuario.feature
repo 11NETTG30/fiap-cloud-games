@@ -1,6 +1,4 @@
-﻿# language: pt-BR
-
-Funcionalidade: Criar usuário
+﻿Funcionalidade: Criar usuário
   Para permitir o cadastro de novos usuários
   Como sistema
   Quero criar um usuário quando os dados forem válidos

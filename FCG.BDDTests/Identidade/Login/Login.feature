@@ -1,6 +1,4 @@
-﻿# language: pt-BR
-
-Funcionalidade: Login de usuário
+﻿Funcionalidade: Login de usuário
   Para permitir autenticação no sistema
   Como usuário
   Quero realizar login com e-mail e senha válidos

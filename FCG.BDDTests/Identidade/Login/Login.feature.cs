@@ -119,7 +119,7 @@ namespace FCG.BDDTests.Identidade.Login
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login com credenciais válidas", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 8
+#line 6
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -129,17 +129,17 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 9
+#line 7
   await testRunner.GivenAsync("que existe um usuário cadastrado para login com e-mail \"gabriel@email.com\" e senh" +
                         "a válida", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-#line 10
+#line 8
   await testRunner.WhenAsync("o login é realizado com e-mail \"gabriel@email.com\" e senha \"123456\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
 #line hidden
-#line 11
+#line 9
   await testRunner.ThenAsync("deve ser retornado um access token", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
 #line hidden
-#line 12
+#line 10
   await testRunner.AndAsync("deve ser gerado um refresh token", ((string)(null)), ((global::Reqnroll.Table)(null)), "E ");
 #line hidden
             }
@@ -156,7 +156,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login com senha inválida", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 14
+#line 12
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -166,14 +166,14 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 15
+#line 13
   await testRunner.GivenAsync("que existe um usuário cadastrado para login com e-mail \"gabriel@email.com\" e senh" +
                         "a inválida", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-#line 16
+#line 14
   await testRunner.WhenAsync("o login é realizado com e-mail \"gabriel@email.com\" e senha \"123456\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
 #line hidden
-#line 17
+#line 15
   await testRunner.ThenAsync("deve ocorrer um erro de autenticação", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
 #line hidden
             }
@@ -190,7 +190,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login com e-mail inexistente", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 19
+#line 17
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -200,13 +200,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 20
+#line 18
   await testRunner.GivenAsync("que não existe usuário cadastrado para login com o e-mail \"gabriel@email.com\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-#line 21
+#line 19
   await testRunner.WhenAsync("o login é realizado com e-mail \"gabriel@email.com\" e senha \"123456\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
 #line hidden
-#line 22
+#line 20
   await testRunner.ThenAsync("deve ocorrer um erro de autenticação", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
 #line hidden
             }

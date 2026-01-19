@@ -1,6 +1,4 @@
-﻿# language: pt-BR
-
-Funcionalidade: Logout
+﻿Funcionalidade: Logout
   Para encerrar a sessão do usuário
   Como sistema
   Quero invalidar o refresh token no logout

@@ -3,6 +3,7 @@ using FCG.Application.Identidade.UseCases;
 using FCG.BDDTests.Support;
 using FCG.Domain.Identidade.Entities;
 using Moq;
+using RefreshTokenEntity = FCG.Domain.Identidade.Entities.RefreshToken;
 
 namespace FCG.BDDTests.Identidade.Logout
 {
@@ -28,7 +29,7 @@ namespace FCG.BDDTests.Identidade.Logout
 
 			_context.RefreshTokenRepository
 				.Setup(x => x.ObterPorToken(_refreshToken))
-				.ReturnsAsync(new RefreshToken(Guid.NewGuid(), 7));
+				.ReturnsAsync(new RefreshTokenEntity(Guid.NewGuid(), 7));
 		}
 
 		[Given(@"que não existe refresh token")]
@@ -38,7 +39,7 @@ namespace FCG.BDDTests.Identidade.Logout
 
 			_context.RefreshTokenRepository
 				.Setup(x => x.ObterPorToken(_refreshToken))
-				.ReturnsAsync((RefreshToken?)null);
+				.ReturnsAsync((RefreshTokenEntity?)null);
 		}
 
 		[When(@"o logout é realizado")]

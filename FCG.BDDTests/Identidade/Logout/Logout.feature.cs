@@ -119,7 +119,7 @@ namespace FCG.BDDTests.Identidade.Logout
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Logout com refresh token válido", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 8
+#line 6
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -129,13 +129,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 9
+#line 7
   await testRunner.GivenAsync("que existe um refresh token válido", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-#line 10
+#line 8
   await testRunner.WhenAsync("o logout é realizado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
 #line hidden
-#line 11
+#line 9
   await testRunner.ThenAsync("o refresh token deve ser revogado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
 #line hidden
             }
@@ -152,7 +152,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Logout com refresh token inexistente", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 13
+#line 11
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -162,13 +162,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 14
+#line 12
   await testRunner.GivenAsync("que não existe refresh token", ((string)(null)), ((global::Reqnroll.Table)(null)), "Dado ");
 #line hidden
-#line 15
+#line 13
   await testRunner.WhenAsync("o logout é realizado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Quando ");
 #line hidden
-#line 16
+#line 14
   await testRunner.ThenAsync("nenhuma revogação deve ocorrer", ((string)(null)), ((global::Reqnroll.Table)(null)), "Então ");
 #line hidden
             }
