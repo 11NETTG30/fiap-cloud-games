@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\FCG.Application\FCG.Application.csproj" />
-    <ProjectReference Include="..\src\FCG.Domain\FCG.Domain.csproj" />
+    <ProjectReference Include="..\..\src\FCG.Application\FCG.Application.csproj" />
+    <ProjectReference Include="..\..\src\FCG.Domain\FCG.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
