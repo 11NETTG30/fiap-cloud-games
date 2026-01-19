@@ -13,15 +13,18 @@ public class UsuarioController : ControllerBase
 {
     private readonly ListarTodosUsuariosUseCase _listarTodosUsuariosUseCase;
     private readonly ObterUsuarioPorIdUseCase _obterUsuarioPorIdUseCase;
+    private readonly TornarUsuarioAdministradorUseCase _tornarUsuarioAdministradorUseCase;
     
     public UsuarioController
     (
         ListarTodosUsuariosUseCase listarTodosUsuariosUseCase,
-        ObterUsuarioPorIdUseCase obterUsuarioPorIdUseCase
+        ObterUsuarioPorIdUseCase obterUsuarioPorIdUseCase,
+        TornarUsuarioAdministradorUseCase tornarUsuarioAdministradorUseCase
     )
     {
         _listarTodosUsuariosUseCase = listarTodosUsuariosUseCase;
         _obterUsuarioPorIdUseCase = obterUsuarioPorIdUseCase;
+        _tornarUsuarioAdministradorUseCase = tornarUsuarioAdministradorUseCase;
     }
 
     [HttpGet]
@@ -42,11 +45,11 @@ public class UsuarioController : ControllerBase
         return Ok(usuario);
     }
 
-    [HttpPatch("{id:guid}/perfil-usuario")]
+    [HttpPatch("{id:guid}/tornar-administrador")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<ActionResult> AlterarPerfilUsuario()
+    public async Task<ActionResult> TornarUsuarioAdministrador(Guid id)
     {
-        await Task.Delay(100);
+        await _tornarUsuarioAdministradorUseCase.Executar(id);
         
         return NoContent();
     }

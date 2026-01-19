@@ -28,6 +28,13 @@ public sealed class UsuarioRepository : IUsuarioRepository
             .AsNoTracking()
             .FirstOrDefaultAsync(u => u.Id == id);
     }
+    
+    public async Task<Usuario?> ObterPorIdTracking(Guid id)
+    {
+        return await _dbContext.Usuarios
+            .AsTracking()
+            .FirstOrDefaultAsync(u => u.Id == id);
+    }
 
     public async Task<Usuario?> ObterPorEmail(string email)
     {
