@@ -1,4 +1,25 @@
-# fiap-cloud-games
+# FIAP Cloud Games (FCG)
+
+## 📚 Sobre o Projeto
+
+Este repositório faz parte do **Tech Challenge da Pós-Graduação em Arquitetura de Sistemas .NET da FIAP**, **Turma 11NETT – Grupo 30**.
+
+O objetivo do projeto é a construção de uma **plataforma de games educacionais**, chamada **FIAP Cloud Games (FCG)**, voltada para o aprendizado e prática de conceitos de tecnologia, utilizando boas práticas de arquitetura de software.
+
+---
+
+## 🎯 Objetivos do Tech Challenge
+
+Os principais objetivos deste projeto são:
+
+- Desenvolver uma **API backend** para uma plataforma de games educacionais
+- Implementar **casos de uso reais**, como cadastro e autenticação de usuários
+- Utilizar **JWT** para autenticação e autorização
+- Persistir dados utilizando **Entity Framework Core**
+- Documentar a API com **Swagger**
+- Implementar **testes unitários**
+
+---
 
 ## 🚀 Setup Inicial
 
@@ -47,11 +68,12 @@ wsl dos2unix scripts/init-database.sh
 
 ### 4. Aplicar Migrations
 
-No console do Gerenciador de Pacotes, selecione o projeto padrão (ex: `Services\Pedido\FCG.Pedido.Infrastructure`) e execute os comandos:
+No console do Gerenciador de Pacotes, selecione o projeto padrão (ex: `src\FCG.Infrastructure`) e execute os comandos:
 
 ```powershell
 # Criar uma nova migration
-Add-Migration MigrationInicialPedidos -Context PedidoDbContext
+Add-Migration InitialIdentidade -Context IdentidadeDbContext -OutputDir Identidade/Persistence/Migrations
+
 # Aplicar as alterações no banco de dados
 Update-Database
 ```
@@ -71,19 +93,23 @@ Rodar a API (FCG.API)
 Acesse: https://localhost:5001/swagger
 
 ## Dados do administrador para login:
-"email": "admin@fcg.com.br",
-"senha": "Admin@123"
+```json
+{
+	"email": "admin@fcg.com.br",
+	"senha": "Admin@123"
+}
+```
 
 ## 📊 Acessar PgAdmin
 
 - **URL:** http://localhost:5050
-- **Email:** (veja `.env` - `PGADMIN_DEFAULT_EMAIL`)
-- **Senha:** (veja `.env` - `PGADMIN_DEFAULT_PASSWORD`)
+- **Email:** (conforme `.env` - `PGADMIN_DEFAULT_EMAIL`)
+- **Senha:** (conforme `.env` - `PGADMIN_DEFAULT_PASSWORD`)
 
 ### Configurar Conexão no PgAdmin
 
 - **Host:** `postgres`
 - **Port:** `5432`
-- **Database:** (veja `.env` - `POSTGRES_DB`)
-- **Username:** (veja `.env` - `POSTGRES_USER`)
-- **Password:** (veja `.env` - `POSTGRES_PASSWORD`)
+- **Database:** (conforme `.env` - `POSTGRES_DB`)
+- **Username:** (conforme `.env` - `POSTGRES_USER`)
+- **Password:** (conforme `.env` - `POSTGRES_PASSWORD`)

@@ -1,47 +1,44 @@
-using FCG.Domain.Shared.Exceptions;
+using FCG.Application.Identidade.DTOs;
+using FCG.Application.Identidade.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FCG.API.Controllers;
 
 [ApiController]
 [Route("api/conta")]
-public class ContaController : ControllerBase
+[Authorize]
+public sealed class ContaController : ControllerBase
 {
-    private readonly ILogger<ContaController> _logger;
+    private readonly AlterarSenhaUseCase _alterarSenhaUseCase;
+    private readonly ObterContaUseCase _obterContaUseCase;
     
     public ContaController
     (
-        ILogger<ContaController> logger
+        AlterarSenhaUseCase alterarSenhaUseCase,
+        ObterContaUseCase obterContaUseCase
     )
     {
-        _logger = logger;
+        _alterarSenhaUseCase = alterarSenhaUseCase;
+        _obterContaUseCase = obterContaUseCase;
     }
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<string>> Obter()
     {
-        await Task.Delay(200);
+        UsuarioDto? usuario = await _obterContaUseCase.Executar();
         
-        return Ok("Usuário");
+        return Ok(usuario);
     }
     
     [HttpPatch("senha")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<ActionResult<string>> AlterarSenha()
+    public async Task<ActionResult> AlterarSenha([FromBody] AlterarSenhaRequest request)
     {
-        await Task.Delay(200);
+        await _alterarSenhaUseCase.Executar(request);
         
         return NoContent();
-    }
-
-    [HttpGet("teste")]
-    public void Teste()
-    {
-        _logger.LogInformation("Testando 123");
-        _logger.LogInformation("Testando 456");
-        
-        throw new ValidationException("Testando 123");
     }
     
 }

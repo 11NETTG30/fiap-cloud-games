@@ -16,10 +16,15 @@ public static class DependencyInjectionApplication
         {
             services.AddFluentValidation();
             
+            services.AddScoped<AlterarSenhaUseCase>();
             services.AddScoped<CriarUsuarioUseCase>();
+            services.AddScoped<ListarTodosUsuariosUseCase>();
             services.AddScoped<LoginUseCase>();
             services.AddScoped<LogoutUseCase>();
+            services.AddScoped<ObterContaUseCase>();
+            services.AddScoped<ObterUsuarioPorIdUseCase>();
             services.AddScoped<RefreshTokenUseCase>();
+            services.AddScoped<TornarUsuarioAdministradorUseCase>();
         }
 
         private void AddFluentValidation()
