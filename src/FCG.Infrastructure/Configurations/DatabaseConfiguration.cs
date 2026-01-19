@@ -15,16 +15,16 @@ public static class DatabaseConfiguration
             string? connectionString = configuration.GetConnectionString("DefaultConnection");
             
             services.AddSingleton<AuditoriaSaveChangesInterceptor>();
-            services.AddDatabasePostgreSQL<IdentidadeDbContext>(connectionString!);
+            services.AddDatabasePostgreSQL<IdentidadeDbContext>(connectionString!, IdentidadeDbContext.SCHEMA);
         }
 
-        private void AddDatabasePostgreSQL<T>(string connectionString) where T : DbContext
+        private void AddDatabasePostgreSQL<T>(string connectionString, string schema) where T : DbContext
         {
             services.AddDbContext<T>((serviceProvider, options) =>
                 options
                     .UseNpgsql(connectionString, optionsPostgress =>
                     {
-                        optionsPostgress.MigrationsHistoryTable("__ef_migrations_history");
+                        optionsPostgress.MigrationsHistoryTable("__ef_migrations_history", schema);
                     })
                     .AddInterceptors(serviceProvider.GetRequiredService<AuditoriaSaveChangesInterceptor>())
             );

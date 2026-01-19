@@ -7,7 +7,7 @@ namespace FCG.Infrastructure.Identidade.Persistence;
 
 public sealed class IdentidadeDbContext : DbContextUoW
 {
-    private const string _SCHEMA = "identidade";
+    public const string SCHEMA = "identidade";
     
     public DbSet<Usuario> Usuarios => Set<Usuario>();
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
@@ -18,7 +18,7 @@ public sealed class IdentidadeDbContext : DbContextUoW
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema(_SCHEMA);
+        modelBuilder.HasDefaultSchema(SCHEMA);
         
         modelBuilder.ApplyConfigurationsFromAssembly(
             typeof(IdentidadeDbContext).Assembly, 
