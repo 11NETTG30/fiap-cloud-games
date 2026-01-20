@@ -21,6 +21,24 @@ Os principais objetivos deste projeto são:
 
 ---
 
+## 🛠️ Tecnologias Utilizadas
+
+| Categoria                | Tecnologia / Ferramenta                                             |
+|--------------------------|---------------------------------------------------------------------|
+| Plataforma               | .NET 10                                                             |
+| Framework Web            | ASP.NET                                                             |
+| Linguagem de Programação | C# 14                                                               |
+| ORM / Persistência       | Entity Framework Core com Migrations                                |
+| Banco de Dados           | PostgreSQL                                                          |
+| Documentação API         | OpenAPI                                                             |
+| Documentação API (UI)    | Swagger e Scalar                                                    |
+| Autenticação             | JWT (JSON Web Tokens) + RefreshToken rotativo                       |
+| Hash senha               | Argon2id com 19 MiB de memória, 2 iterações e grau 1 de paralelismo |
+| Monitoramento            | New Relic (.NET Agent)                                              |
+| Testes Unitários         | xUnit                                                               |
+| Testes de Mutação        | Stryker.NET                                                         |
+| BDD                      | Reqnroll, NUnit, Moq                                                |
+
 ## 🚀 Setup Inicial
 
 ### 1. Configurar Variáveis de Ambiente do docker-compose
