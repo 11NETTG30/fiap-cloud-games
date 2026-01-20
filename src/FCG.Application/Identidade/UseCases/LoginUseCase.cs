@@ -37,6 +37,9 @@ public sealed class LoginUseCase
         Usuario usuario = await _usuarioRepository.ObterPorEmail(request.Email)
             ?? throw new UnauthorizedAccessException(mensagemErroPadrao);
 
+        if (!usuario.Ativo)
+            throw new UnauthorizedAccessException("Usuário inativado");
+        
         bool senhaValida = _senhaHasher.ValidarSenha(request.Senha, usuario.SenhaHash);
         
         if (!senhaValida)

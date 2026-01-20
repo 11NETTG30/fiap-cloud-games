@@ -38,9 +38,11 @@ public sealed class UsuarioRepository : IUsuarioRepository
 
     public async Task<Usuario?> ObterPorEmail(string email)
     {
+        string emailNormalizado = email.Trim().ToLowerInvariant();
+        
         return await _dbContext.Usuarios
             .AsNoTracking()
-            .FirstOrDefaultAsync(u => u.Email.Valor == email);
+            .FirstOrDefaultAsync(u => u.Email.Valor == emailNormalizado);
     }
 
     public async Task Adicionar(Usuario usuario)
