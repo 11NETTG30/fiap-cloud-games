@@ -33,6 +33,13 @@ public sealed class RefreshTokenRepository : IRefreshTokenRepository
             .AddAsync(refreshToken);
     }
 
+    public async Task<List<RefreshToken>> ListarNaoRevogadosPorUsuario(Guid usuarioId)
+    {
+        return await _dbContext.RefreshTokens
+            .Where(rt => rt.UsuarioId == usuarioId && !rt.Revogado)
+            .ToListAsync();
+    }
+
     public void Dispose()
     {
         _dbContext?.Dispose();

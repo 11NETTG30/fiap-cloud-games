@@ -16,8 +16,10 @@ public static class DependencyInjectionApplication
         {
             services.AddFluentValidation();
             
+            services.AddScoped<AtivarUsuarioUseCase>();
             services.AddScoped<AlterarSenhaUseCase>();
             services.AddScoped<CriarUsuarioUseCase>();
+            services.AddScoped<InativarUsuarioUseCase>();
             services.AddScoped<ListarTodosUsuariosUseCase>();
             services.AddScoped<LoginUseCase>();
             services.AddScoped<LogoutUseCase>();

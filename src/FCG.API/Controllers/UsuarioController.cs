@@ -11,17 +11,23 @@ namespace FCG.API.Controllers;
 [Authorize(Roles = RoleNames.Admin)]
 public class UsuarioController : ControllerBase
 {
+    private readonly  AtivarUsuarioUseCase _ativarUsuarioUseCase;
+    private readonly InativarUsuarioUseCase _inativarUsuarioUseCase;
     private readonly ListarTodosUsuariosUseCase _listarTodosUsuariosUseCase;
     private readonly ObterUsuarioPorIdUseCase _obterUsuarioPorIdUseCase;
     private readonly TornarUsuarioAdministradorUseCase _tornarUsuarioAdministradorUseCase;
     
     public UsuarioController
     (
+        AtivarUsuarioUseCase ativarUsuarioUseCase,
+        InativarUsuarioUseCase inativarUsuarioUseCase,
         ListarTodosUsuariosUseCase listarTodosUsuariosUseCase,
         ObterUsuarioPorIdUseCase obterUsuarioPorIdUseCase,
         TornarUsuarioAdministradorUseCase tornarUsuarioAdministradorUseCase
     )
     {
+        _ativarUsuarioUseCase = ativarUsuarioUseCase;
+        _inativarUsuarioUseCase = inativarUsuarioUseCase;
         _listarTodosUsuariosUseCase = listarTodosUsuariosUseCase;
         _obterUsuarioPorIdUseCase = obterUsuarioPorIdUseCase;
         _tornarUsuarioAdministradorUseCase = tornarUsuarioAdministradorUseCase;
@@ -50,6 +56,24 @@ public class UsuarioController : ControllerBase
     public async Task<ActionResult> TornarUsuarioAdministrador(Guid id)
     {
         await _tornarUsuarioAdministradorUseCase.Executar(id);
+        
+        return NoContent();
+    }
+    
+    [HttpPatch("{id:guid}/inativar")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<ActionResult> InativarUsuario(Guid id)
+    {
+        await _inativarUsuarioUseCase.Executar(id);
+        
+        return NoContent();
+    }
+    
+    [HttpPatch("{id:guid}/ativar")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<ActionResult> AtivarUsuario(Guid id)
+    {
+        await _ativarUsuarioUseCase.Executar(id);
         
         return NoContent();
     }
